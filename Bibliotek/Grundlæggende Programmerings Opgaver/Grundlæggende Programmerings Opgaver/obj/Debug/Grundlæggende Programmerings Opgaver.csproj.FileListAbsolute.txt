@@ -1,0 +1,7 @@
+C:\Users\ikkeo\source\repos\Grundlæggende Programmerings Opgaver\Grundlæggende Programmerings Opgaver\bin\Debug\Grundlæggende Programmerings Opgaver.exe.config
+C:\Users\ikkeo\source\repos\Grundlæggende Programmerings Opgaver\Grundlæggende Programmerings Opgaver\bin\Debug\Grundlæggende Programmerings Opgaver.exe
+C:\Users\ikkeo\source\repos\Grundlæggende Programmerings Opgaver\Grundlæggende Programmerings Opgaver\bin\Debug\Grundlæggende Programmerings Opgaver.pdb
+C:\Users\ikkeo\source\repos\Grundlæggende Programmerings Opgaver\Grundlæggende Programmerings Opgaver\obj\Debug\Grundlæggende Programmerings Opgaver.csprojAssemblyReference.cache
+C:\Users\ikkeo\source\repos\Grundlæggende Programmerings Opgaver\Grundlæggende Programmerings Opgaver\obj\Debug\Grundlæggende Programmerings Opgaver.csproj.CoreCompileInputs.cache
+C:\Users\ikkeo\source\repos\Grundlæggende Programmerings Opgaver\Grundlæggende Programmerings Opgaver\obj\Debug\Grundlæggende Programmerings Opgaver.exe
+C:\Users\ikkeo\source\repos\Grundlæggende Programmerings Opgaver\Grundlæggende Programmerings Opgaver\obj\Debug\Grundlæggende Programmerings Opgaver.pdb
