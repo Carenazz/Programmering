@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Grundlæggende_Programmerings_Opgaver
 {
@@ -13,40 +13,95 @@ namespace Grundlæggende_Programmerings_Opgaver
             Console.Write("Enter your name: ");
             string name = Console.ReadLine();
 
-            // Siger hej til informationerne brugeren har indtastet.
-            UsefulTools.SayHi(name);
+            BookInstantiate();
 
+            // Siger hej til informationerne brugeren har indtastet.
+            Console.WriteLine("Hello " + name);
+
+            HovedMenu();
+        }
+
+        static void BookSelect()
+        {
+            // Skriver antallet af bøger ud.
+            Console.WriteLine("Number of books: " + Book.bookCount);
+
+            do
+            {
+                try
+                {
+                    Console.Write("Select a book from ID: ");
+                    string bookID = Console.ReadLine();
+                    Console.WriteLine(Book.books[Convert.ToInt32(bookID) - 1].Summary());
+                }
+                // Error Handling, hvis man kom til at skrive f.eks. q i stedet for 1 eller der ikke findes en bog med ID'et.
+                catch (FormatException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                catch
+                {
+                    Console.WriteLine("No such book");
+                    continue;
+                }
+
+                // Giver brugeren en mulighed for at se flere bøger.
+                Console.Write("Search for another book? Y/N : ");
+                string verification = Console.ReadLine();
+                if (verification.ToLower() == "y")
+                {
+                    Console.WriteLine("Returning");
+                }
+                else if (verification.ToLower() == "n")
+                {
+                    Console.WriteLine("Closing program");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine(verification + " is not a valid input, closing program");
+                    break;
+                }
+            } while (true);
+        }
+
+        static void HovedMenu()
+        {
+            Console.WriteLine("Hovedmenu \n" +
+                "--------------------------- \n" +
+                "1: Vælg en bog \n" +
+                "2: Indtast en ny bog \n" +
+                "3: Fjern en bog \n" +
+                "---------------------------");
+
+            Console.Write("Enter an option in the menu: ");
+            string menuSelect = Console.ReadLine();
+
+            switch (menuSelect)
+            {
+                case "1":
+                    BookSelect();
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                default:
+                    Console.WriteLine("Du har tastet noget forkert, prøv igen");
+                    HovedMenu();
+                    break;
+            }
+            Console.ReadLine();
+        }
+
+
+        static void BookInstantiate()
+        {
             // Laver objekter og instanstiere book constructor klassen.
             Book book1 = new Book("Harry Potter", "JK Rowling", 309, "PG");
             Book book2 = new Book("Lord of the Rings", "Tolkein", 1214, "PG-13");
             Book book3 = new Book("Star Wars", "George Lucas", 512, "G");
             Book book4 = new Book("Den grimme ælling", "H.C. Andersen", 120, "G");
-
-            // Skriver antallet af bøger ud.
-            Console.WriteLine("Number of books: " + Book.bookCount);
-
-            // En goto til fra error handling i tilfælde brugeren har indtastet forkert eller et ID som bøgerne ikke har.
-            tryAgain:
-            Console.Write("Select a book from ID: ");
-            string bookID = Console.ReadLine();
-
-            try
-            {
-                Console.WriteLine(Book.books[Convert.ToInt32(bookID) - 1].Summary());
-            }
-            // Error Handling, hvis man kom til at skrive f.eks. q i stedet for 1 eller der ikke findes en bog med ID'et og sender en tilbage for at prøve igen.
-            catch(FormatException e)
-            {
-                Console.WriteLine(e.Message + " Returning to bookID input");
-                goto tryAgain;
-            }
-            catch
-            {
-                Console.WriteLine("No such book, try again");
-                goto tryAgain;
-            }
-
-            Console.ReadLine();
         }
     }
 }

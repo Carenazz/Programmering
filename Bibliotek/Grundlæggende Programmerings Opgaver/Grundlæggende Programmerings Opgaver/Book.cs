@@ -45,7 +45,8 @@ namespace Grundlæggende_Programmerings_Opgaver
         {
             return  "Title: " + this.title + 
                     "\nAuthor: " + this.author + 
-                    "\nPages: " + this.pages + "\nRating: " + this.Rating;
+                    "\nPages: " + this.pages + 
+                    "\nRating: " + this.Rating;
         }
     }
 }
