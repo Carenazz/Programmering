@@ -18,83 +18,9 @@ namespace Grundlæggende_Programmerings_Opgaver
             // Siger hej til informationerne brugeren har indtastet.
             Console.WriteLine("Hello " + name);
 
-            HovedMenu();
+            Hovedmenu.HovedMenu();
         }
-
-        static void BookSelect()
-        {
-            // Skriver antallet af bøger ud.
-            Console.WriteLine("Number of books: " + Book.bookCount);
-
-            do
-            {
-                try
-                {
-                    Console.Write("Select a book from ID: ");
-                    string bookID = Console.ReadLine();
-                    Console.WriteLine(Book.books[Convert.ToInt32(bookID) - 1].Summary());
-                }
-                // Error Handling, hvis man kom til at skrive f.eks. q i stedet for 1 eller der ikke findes en bog med ID'et.
-                catch (FormatException e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                catch
-                {
-                    Console.WriteLine("No such book");
-                    continue;
-                }
-
-                // Giver brugeren en mulighed for at se flere bøger.
-                Console.Write("Search for another book? Y/N : ");
-                string verification = Console.ReadLine();
-                if (verification.ToLower() == "y")
-                {
-                    Console.WriteLine("Returning");
-                }
-                else if (verification.ToLower() == "n")
-                {
-                    Console.WriteLine("Closing program");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine(verification + " is not a valid input, closing program");
-                    break;
-                }
-            } while (true);
-        }
-
-        static void HovedMenu()
-        {
-            Console.WriteLine("Hovedmenu \n" +
-                "--------------------------- \n" +
-                "1: Vælg en bog \n" +
-                "2: Indtast en ny bog \n" +
-                "3: Fjern en bog \n" +
-                "---------------------------");
-
-            Console.Write("Enter an option in the menu: ");
-            string menuSelect = Console.ReadLine();
-
-            switch (menuSelect)
-            {
-                case "1":
-                    BookSelect();
-                    break;
-                case "2":
-                    break;
-                case "3":
-                    break;
-                default:
-                    Console.WriteLine("Du har tastet noget forkert, prøv igen");
-                    HovedMenu();
-                    break;
-            }
-            Console.ReadLine();
-        }
-
-
+        
         static void BookInstantiate()
         {
             // Laver objekter og instanstiere book constructor klassen.
