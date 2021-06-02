@@ -10,13 +10,9 @@ namespace Grundlæggende_Programmerings_Opgaver
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter your name: ");
-            string name = Console.ReadLine();
+            Greetings.SayHi();
 
             BookInstantiate();
-
-            // Siger hej til informationerne brugeren har indtastet.
-            Console.WriteLine("Hello " + name);
 
             Hovedmenu.HovedMenu();
         }

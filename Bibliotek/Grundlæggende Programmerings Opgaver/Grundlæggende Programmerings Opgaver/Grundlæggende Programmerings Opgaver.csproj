@@ -45,11 +45,14 @@
   <ItemGroup>
     <Compile Include="AddBook.cs" />
     <Compile Include="Book.cs" />
+    <Compile Include="BookData.cs" />
     <Compile Include="BookList.cs" />
+    <Compile Include="Greetings.cs" />
     <Compile Include="Hovedmenu.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectBook.cs" />
     <Compile Include="UsefulTools.cs" />
   </ItemGroup>
   <ItemGroup>

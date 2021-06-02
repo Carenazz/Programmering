@@ -8,6 +8,7 @@ namespace Grundlæggende_Programmerings_Opgaver
 {
     class AddBook
     {
+        string verification;
         public string title;
         public string author;
         public int pages;
@@ -15,6 +16,7 @@ namespace Grundlæggende_Programmerings_Opgaver
 
         public void BookAdd()
         {
+            // Bogens information (Titel, forfatter, sider og rating)
             Console.Write("Enter a book name: ");
             title = Console.ReadLine();
 
@@ -33,12 +35,28 @@ namespace Grundlæggende_Programmerings_Opgaver
             Console.Write("Enter book rating: ");
             Rating = Console.ReadLine();
 
-            Book newBook = new Book(title, author, pages, Rating);
-
-            Console.WriteLine("Book: " + title + " has been added, returning to menu \n" +
+            // Giver brugeren en chance for at se om der er tastet rigtigt
+            Console.WriteLine(title + "\n" +
+                author + "\n" +
+                pages + "\n" +
+                Rating);
+            
+            // Verification på om bogen skulle tilføjes, hvis ja. Adder bogen til listen. (Databasen senere)
+            Console.WriteLine("Book will be added, is the information correct? Y/N : \n" +
                 ".................");
-
-            Hovedmenu.HovedMenu();
+            verification = Console.ReadLine();
+            if (verification.ToLower() == "y")
+            {
+                Book newBook = new Book(title, author, pages, Rating);
+                Console.Clear();
+                Console.WriteLine("Book has been added");
+                Hovedmenu.HovedMenu();
+            }
+            else
+            {
+                Hovedmenu.HovedMenu();
+                Console.WriteLine("Book addition has been cancelled.");
+            }
         }
 
         public string Rating

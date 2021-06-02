@@ -8,6 +8,8 @@ namespace Grundlæggende_Programmerings_Opgaver
 {
     class Hovedmenu
     {
+
+        // Hovedmenu til valg af en bog, lave en bog eller fjernelse af en bog. Med en switch/case for at registrere et valid valg.
         static public void HovedMenu()
         {
             Console.WriteLine("Main Menu \n" +
@@ -27,7 +29,7 @@ namespace Grundlæggende_Programmerings_Opgaver
             switch (menuSelect)
             {
                 case "1":
-                    BookSelect();
+                    SelectBook.BookSelect();
                     break;
                 case "2":
                     AddBook newBook = new AddBook();
@@ -39,58 +41,12 @@ namespace Grundlæggende_Programmerings_Opgaver
                     System.Environment.Exit(0);
                     break;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Du har tastet noget forkert, prøv igen");
                     HovedMenu();
                     break;
             }
             Console.ReadLine();
-        }
-
-        static void BookSelect()
-        {
-            // Skriver antallet af bøger ud.
-            Console.WriteLine("Number of books: " + Book.bookCount);
-
-            do
-            {
-                try
-                {
-                    Console.Write("Select a book from ID: ");
-                    string bookID = Console.ReadLine();
-                    Console.WriteLine(Book.books[Convert.ToInt32(bookID) - 1].Summary());
-                }
-                // Error Handling, hvis man kom til at skrive f.eks. q i stedet for 1 eller der ikke findes en bog med ID'et.
-                catch (FormatException e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                catch
-                {
-                    Console.WriteLine("No such book");
-                    continue;
-                }
-
-                // Giver brugeren en mulighed for at se flere bøger.
-                Console.Write("Search for another book? Y/N : ");
-                string verification = Console.ReadLine();
-                if (verification.ToLower() == "y")
-                {
-                    Console.WriteLine("Returning \n" +
-                        "..................");
-                }
-                else if (verification.ToLower() == "n")
-                {
-                    Console.WriteLine("Returning to main menu \n" +
-                        "..................");
-                    HovedMenu();
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine(verification + " is not a valid input, closing program");
-                    break;
-                }
-            } while (true);
         }
     }
 }
