@@ -12,7 +12,11 @@ namespace Grundlæggende_Programmerings_Opgaver
         {
             Console.Write("Enter your name: ");
             string name = Console.ReadLine();
-            Console.WriteLine("Hello " + name + "!");
+            Console.WriteLine(
+                "--------------------------- \n" +
+                "Hello " + name + "!" + "\n" +
+                "---------------------------"
+                );
         }
     }
 }

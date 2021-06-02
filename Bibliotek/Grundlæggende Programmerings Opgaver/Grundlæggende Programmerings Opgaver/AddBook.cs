@@ -33,17 +33,21 @@ namespace Grundlæggende_Programmerings_Opgaver
                 Console.WriteLine(e.Message);
             }
             Console.Write("Enter book rating: ");
-            Rating = Console.ReadLine();
+            Rating = Console.ReadLine().ToUpper();
 
             // Giver brugeren en chance for at se om der er tastet rigtigt
-            Console.WriteLine(title + "\n" +
+            Console.WriteLine(
+                "---------------------------" + "\n" +
+                title + "\n" +
                 author + "\n" +
                 pages + "\n" +
-                Rating);
+                Rating + "\n" +
+                "---------------------------"
+                );
             
             // Verification på om bogen skulle tilføjes, hvis ja. Adder bogen til listen. (Databasen senere)
             Console.WriteLine("Book will be added, is the information correct? Y/N : \n" +
-                ".................");
+                "---------------------------");
             verification = Console.ReadLine();
             if (verification.ToLower() == "y")
             {
@@ -54,8 +58,9 @@ namespace Grundlæggende_Programmerings_Opgaver
             }
             else
             {
-                Hovedmenu.HovedMenu();
+                Console.Clear();
                 Console.WriteLine("Book addition has been cancelled.");
+                Hovedmenu.HovedMenu();
             }
         }
 
