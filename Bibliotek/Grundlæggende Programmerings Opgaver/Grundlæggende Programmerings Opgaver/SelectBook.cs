@@ -39,8 +39,7 @@ namespace Grundlæggende_Programmerings_Opgaver
                 string verification = Console.ReadLine();
                 if (verification.ToLower() == "y")
                 {
-                    Console.WriteLine("Returning \n" +
-                        "---------------------------");
+                    Console.WriteLine("Returning");
                 }
                 else if (verification.ToLower() == "n")
                 {

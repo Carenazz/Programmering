@@ -36,6 +36,7 @@ namespace Grundlæggende_Programmerings_Opgaver
                     newBook.BookAdd();
                     break;
                 case "3":
+                    RemoveBook.BookRemove();
                     break;
                 case "c":
                     System.Environment.Exit(0);

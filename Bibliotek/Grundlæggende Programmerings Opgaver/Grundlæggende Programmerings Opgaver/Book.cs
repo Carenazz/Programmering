@@ -48,5 +48,10 @@ namespace Grundlæggende_Programmerings_Opgaver
                     "\nPages: " + this.pages + 
                     "\nRating: " + this.Rating;
         }
+
+        static public void RemovedBook()
+        {
+            bookCount--;
+        }
     }
 }
