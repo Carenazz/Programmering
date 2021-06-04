@@ -43,7 +43,7 @@ namespace Grundlæggende_Programmerings_Opgaver
                     break;
                 default:
                     Console.Clear();
-                    Console.WriteLine("Du har tastet noget forkert, prøv igen");
+                    Console.WriteLine("You typed something wrong, try again.");
                     HovedMenu();
                     break;
             }

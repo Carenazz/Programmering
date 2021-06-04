@@ -20,6 +20,13 @@ namespace Grundlæggende_Programmerings_Opgaver
             Console.Write("Enter a book name: ");
             title = Console.ReadLine();
 
+            // Checking if string is empty.
+            if (title == "")
+            {
+                Console.WriteLine("The book name can't be empty, try again.");
+                BookAdd(); // TODO - Move cursor up one, reason: To not have multiple lines of the same prompt.
+            }
+
             Console.Write("Enter the author: ");
             author = Console.ReadLine();
 
