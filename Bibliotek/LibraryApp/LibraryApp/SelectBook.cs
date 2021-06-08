@@ -11,7 +11,7 @@ namespace LibraryApp
         public static void BookSelect()
         {
             // Skriver antallet af bøger ud. - Lav om til SQL
-            Console.WriteLine("Number of books: " + Book.bookCount);
+            BookData.PrintData();
 
             do
             {
@@ -20,7 +20,7 @@ namespace LibraryApp
                     Console.Write("--------------------------- \n" +
                         "Select a book from ID: ");
                     string bookID = Console.ReadLine();
-                    Console.WriteLine(Book.books[Convert.ToInt32(bookID) - 1].Summary());
+                    Console.WriteLine(BookData.GetBook(Convert.ToInt32(bookID)).Summary());
                     Console.WriteLine("---------------------------");
                 }
                 // Error Handling, hvis man kom til at skrive f.eks. q i stedet for 1 eller der ikke findes en bog med ID'et.
@@ -33,7 +33,6 @@ namespace LibraryApp
                     Console.WriteLine("No such book");
                     continue;
                 }
-
                 // Giver brugeren en mulighed for at se flere bøger.
                 Console.Write("Search for another book? Y/N : ");
                 string verification = Console.ReadLine();

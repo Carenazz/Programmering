@@ -9,6 +9,20 @@ namespace LibraryApp
 {
     public class BookData
     {
+        private static List<Book> books = new List<Book>();
+
+        static public Book GetBook(int bookID) 
+        {
+            foreach (Book book in books)
+            {
+                if (book.ID == bookID)
+                {
+                    return book;
+                }
+            }
+            throw new IndexOutOfRangeException("No book with the ID " + bookID + " was found");
+        }
+
         static public void Connector()
         {
             SQLiteConnection sqlite_conn;
@@ -43,7 +57,16 @@ namespace LibraryApp
 
         }
 
-        static void ReadData(SQLiteConnection conn)
+        public static void PrintData()
+        {
+            foreach (Book book in books)
+            {
+                Console.WriteLine(book);
+            }
+        }
+
+
+        public static void ReadData(SQLiteConnection conn)
         {
             SQLiteDataReader sqlite_datareader;
             SQLiteCommand sqlite_cmd;
@@ -53,10 +76,13 @@ namespace LibraryApp
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while (sqlite_datareader.Read())
             {
-                string myreader = sqlite_datareader.GetString(1);
-                Console.WriteLine(myreader);
+                int myID = sqlite_datareader.GetInt32(0);
+                string myTitle = sqlite_datareader.GetString(1);
+                string myAuthor = sqlite_datareader.GetString(2);
+                int myPages = sqlite_datareader.GetInt32(3);
+                string myRating = sqlite_datareader.GetString(4);
+                books.Add(new Book(myID, myTitle, myAuthor, myPages, myRating));
             }
-
         }
     }
 }

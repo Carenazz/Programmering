@@ -8,6 +8,7 @@ namespace LibraryApp
 {
     public class Book : BookList
     {
+        public int ID;
         public string title;
         public string author;
         public int pages;
@@ -15,8 +16,9 @@ namespace LibraryApp
         public static int bookCount = 0;
 
         // Constructor til titel, author, pages og rating til en bog og tilføjer den til listen og holder styr på antallet af bøger.
-        public Book(string aTitle, string aAuthor, int aPages, string aRating)
+        public Book(int aID, string aTitle, string aAuthor, int aPages, string aRating)
         {
+            ID = aID;
             title = aTitle;
             author = aAuthor;
             pages = aPages;
@@ -40,6 +42,7 @@ namespace LibraryApp
                 }
             }
         }
+
         // Returner informationer på bogen.
         public string Summary()
         {
@@ -52,6 +55,11 @@ namespace LibraryApp
         static public void RemovedBook()
         {
             bookCount--;
+        }
+
+        public override string ToString()
+        {
+            return this.ID + " : " + this.title;
         }
     }
 }

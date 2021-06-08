@@ -8,7 +8,7 @@ namespace LibraryApp
         static void Main(string[] args)
         {
             Greetings.SayHi();
-            
+
             BookData.Connector();
 
             Hovedmenu.HovedMenu();
