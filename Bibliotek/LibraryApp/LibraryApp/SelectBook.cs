@@ -10,7 +10,7 @@ namespace LibraryApp
     {
         public static void BookSelect()
         {
-            // Skriver antallet af bøger ud.
+            // Skriver antallet af bøger ud. - Lav om til SQL
             Console.WriteLine("Number of books: " + Book.bookCount);
 
             do
