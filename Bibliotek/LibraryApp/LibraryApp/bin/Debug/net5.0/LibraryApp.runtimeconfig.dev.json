@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\ikkeo\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\ikkeo\\.nuget\\packages"
+    ]
+  }
+}
