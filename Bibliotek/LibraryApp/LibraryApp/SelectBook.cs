@@ -10,7 +10,7 @@ namespace LibraryApp
     {
         public static void BookSelect()
         {
-            // Skriver antallet af bøger ud. - Lav om til SQL
+            // Skriver ID + bogens titel ud
             BookData.PrintData();
 
             do
@@ -18,7 +18,7 @@ namespace LibraryApp
                 try
                 {
                     Console.Write("--------------------------- \n" +
-                        "Select a book from ID: ");
+                        "Select a book from ID for more information: ");
                     string bookID = Console.ReadLine();
                     Console.WriteLine(BookData.GetBook(Convert.ToInt32(bookID)).Summary());
                     Console.WriteLine("---------------------------");

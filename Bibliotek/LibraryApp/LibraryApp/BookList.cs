@@ -10,9 +10,6 @@ namespace LibraryApp
     {
         static public int removal;
 
-        // Lavede det her kun for nedarvnings eksempel til at lave en liste af bøger udenfor Book klassen.
-        public static List<Book> books = new List<Book>();
-
         static public void RemoveBook()
         {
             Console.Write("Confirm choice? Y / N : ");
@@ -20,10 +17,9 @@ namespace LibraryApp
 
             if (verification.ToLower() == "y")
             {
-                books.RemoveAt(removal - 1);
+                BookData.BookRemoval(removal);
                 Console.Clear();
                 Console.WriteLine("Book has been removed");
-                Book.RemovedBook();
                 Hovedmenu.HovedMenu();
             }
             else
@@ -35,3 +31,5 @@ namespace LibraryApp
         }
     }
 }
+
+//books.RemoveAt(removal);

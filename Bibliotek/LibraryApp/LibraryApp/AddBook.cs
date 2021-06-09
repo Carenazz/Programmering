@@ -58,7 +58,7 @@ namespace LibraryApp
             verification = Console.ReadLine();
             if (verification.ToLower() == "y")
             {
-                Book newBook = new Book(0, title, author, pages, Rating);
+                BookData.InsertData(title, author, pages, Rating);
                 Console.Clear();
                 Console.WriteLine("Book has been added");
                 Hovedmenu.HovedMenu();

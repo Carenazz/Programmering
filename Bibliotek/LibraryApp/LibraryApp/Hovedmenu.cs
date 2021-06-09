@@ -12,15 +12,16 @@ namespace LibraryApp
         static public void HovedMenu()
         {
             Console.WriteLine("Main Menu \n" +
-                "--------------------------- \n" +
+                "------------------------------------- \n" +
                 "1: Choose a book \n" +
                 "2: Add a new book \n" +
-                "3: Remove a book \n" +
+                "3: Edit an existing book \n" +
+                "4: Remove a book \n" +
                 "\n" +
                 "\n" +
                 "\n" +
                 "C: Close application \n" +
-                "---------------------------");
+                "-------------------------------------");
 
             Console.Write("Enter an option in the menu: ");
             string menuSelect = Console.ReadLine().ToLower();
@@ -36,6 +37,9 @@ namespace LibraryApp
                     newBook.BookAdd();
                     break;
                 case "3":
+                    EditBook editBook = new EditBook();
+                    break;
+                case "4":
                     RemoveBook.BookRemove();
                     break;
                 case "c":

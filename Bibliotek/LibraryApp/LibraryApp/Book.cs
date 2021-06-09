@@ -24,7 +24,6 @@ namespace LibraryApp
             pages = aPages;
             Rating = aRating;
             bookCount++;
-            books.Add(this);
         }
         // Property for rating og sikrer værdierne ikke kan sættes til hvad som helst.
         public string Rating
