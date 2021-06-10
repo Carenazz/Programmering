@@ -37,7 +37,7 @@ namespace LibraryApp
                     newBook.BookAdd();
                     break;
                 case "3":
-                    EditBook editBook = new EditBook();
+                    EditBook.BookEdit();
                     break;
                 case "4":
                     RemoveBook.BookRemove();

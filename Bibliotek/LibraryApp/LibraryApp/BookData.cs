@@ -33,7 +33,7 @@ namespace LibraryApp
         {
             sqlite_cmd = conn.CreateCommand();
 
-            sqlite_cmd.CommandText = String.Format("UPDATE BookList SET Title = '{0}', Author = '{1}', Pages = '{2}', Rating = '{3}'",
+            sqlite_cmd.CommandText = String.Format("UPDATE BookList SET Title = '{0}', Author = '{1}', Pages = {2}, Rating = '{3}'",
                                                     title,
                                                     author,
                                                     pages,
