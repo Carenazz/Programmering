@@ -12,7 +12,7 @@ namespace LibraryApp
         public string title;
         public string author;
         public int pages;
-        private string rating;
+        Book rate = new Book();
 
         public void BookAdd()
         {
@@ -40,7 +40,7 @@ namespace LibraryApp
                 Console.WriteLine(e.Message);
             }
             Console.Write("Enter book rating: ");
-            Rating = Console.ReadLine().ToUpper();
+            rate.Rating = Console.ReadLine().ToUpper();
 
             // Giver brugeren en chance for at se om der er tastet rigtigt
             Console.WriteLine(
@@ -48,7 +48,7 @@ namespace LibraryApp
                 title + "\n" +
                 author + "\n" +
                 pages + "\n" +
-                Rating + "\n" +
+                rate.Rating + "\n" +
                 "---------------------------"
                 );
 
@@ -58,32 +58,14 @@ namespace LibraryApp
             verification = Console.ReadLine();
             if (verification.ToLower() == "y")
             {
-                BookData.InsertData(title, author, pages, Rating);
+                BookData.InsertData(title, author, pages, rate.Rating);
                 Console.Clear();
                 Console.WriteLine("Book has been added");
-                Hovedmenu.HovedMenu();
             }
             else
             {
                 Console.Clear();
                 Console.WriteLine("Book addition has been cancelled.");
-                Hovedmenu.HovedMenu();
-            }
-        }
-
-        public string Rating
-        {
-            get { return rating; }
-            set
-            {
-                if (value == "G" || value == "PG" || value == "PG-13" || value == "R" || value == "NR")
-                {
-                    rating = value;
-                }
-                else
-                {
-                    rating = "NR";
-                }
             }
         }
     }

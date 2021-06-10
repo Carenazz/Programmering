@@ -13,7 +13,6 @@ namespace LibraryApp
         public string author;
         public int pages;
         private string rating;
-        public static int bookCount = 0;
 
         // Constructor til titel, author, pages og rating til en bog og tilføjer den til listen og holder styr på antallet af bøger.
         public Book(int aID, string aTitle, string aAuthor, int aPages, string aRating)
@@ -23,8 +22,13 @@ namespace LibraryApp
             author = aAuthor;
             pages = aPages;
             Rating = aRating;
-            bookCount++;
         }
+
+        public Book()
+        {
+
+        }
+
         // Property for rating og sikrer værdierne ikke kan sættes til hvad som helst.
         public string Rating
         {
@@ -49,11 +53,6 @@ namespace LibraryApp
                     "\nAuthor: " + this.author +
                     "\nPages: " + this.pages +
                     "\nRating: " + this.Rating;
-        }
-
-        static public void RemovedBook()
-        {
-            bookCount--;
         }
 
         public override string ToString()

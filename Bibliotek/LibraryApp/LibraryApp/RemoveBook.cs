@@ -26,7 +26,6 @@ namespace LibraryApp
             {
                 Console.Clear();
                 Console.WriteLine(e.Message);
-                Hovedmenu.HovedMenu();
             }
         }
 
@@ -40,13 +39,11 @@ namespace LibraryApp
                 BookData.BookRemoval(removal);
                 Console.Clear();
                 Console.WriteLine("Book has been removed");
-                Hovedmenu.HovedMenu();
             }
             else if(verification.ToLower() == "n")
             {
                 Console.Clear();
                 Console.WriteLine("Book removal has been cancelled");
-                Hovedmenu.HovedMenu();
             }
             else
             {

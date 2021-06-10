@@ -11,7 +11,8 @@ namespace LibraryApp
 
             BookData.Connector();
 
-            Hovedmenu.HovedMenu();
+            Hovedmenu hm = new Hovedmenu();
+            hm.HovedMenu();
         }
     }
 }

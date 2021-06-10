@@ -10,6 +10,7 @@ namespace LibraryApp
     {
         public static void BookSelect()
         {
+            bool stopper = false;
             // Skriver ID + bogens titel ud
             BookData.PrintData();
 
@@ -45,18 +46,16 @@ namespace LibraryApp
                     Console.Clear();
                     Console.WriteLine("Returning to main menu \n" +
                         "----------------------------");
-                    Hovedmenu.HovedMenu();
-                    break;
+                    stopper = true;
                 }
                 else
                 {
                     Console.WriteLine(verification + " is not a valid input, returning to main menu");
                     Console.ReadKey();
                     Console.Clear();
-                    Hovedmenu.HovedMenu();
-                    break;
+                    stopper = true;
                 }
-            } while (true);
+            } while (!stopper);
         }
     }
 }
