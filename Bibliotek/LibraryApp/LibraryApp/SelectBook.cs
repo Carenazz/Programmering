@@ -38,7 +38,7 @@ namespace LibraryApp
                 string verification = Console.ReadLine();
                 if (verification.ToLower() == "y")
                 {
-                    Console.WriteLine("Returning");
+                    continue;
                 }
                 else if (verification.ToLower() == "n")
                 {

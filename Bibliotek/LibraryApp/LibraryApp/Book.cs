@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryApp
 {
-    public class Book : BookList
+    public class Book
     {
         public int ID;
         public string title;
