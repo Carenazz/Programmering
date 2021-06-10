@@ -10,16 +10,15 @@ namespace LibraryApp
     {
         static public void BookRemove()
         {
+            BookData.PrintData();
+
             Console.Write("Enter the bookID to add the book to a list for removal: ");
             string info = Console.ReadLine();
 
             try
             {
                 BookList.removal = Convert.ToInt32(info);
-                if (Convert.ToInt32(info) <= Book.bookCount)
-                {
-                    BookList.RemoveBook();
-                }
+                BookList.RemoveBook();
 
             }
             catch (FormatException e)
