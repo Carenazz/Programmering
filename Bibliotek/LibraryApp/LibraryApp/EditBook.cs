@@ -9,7 +9,7 @@ namespace LibraryApp
     class EditBook
     {
         // Lav et system som kan ændre dataen i SQL
-        static public void BookEdit()
+        public void BookEdit()
         {
             string title, author, rating;
             int pages;
@@ -18,6 +18,17 @@ namespace LibraryApp
 
             Console.Write("Enter the bookID to add the book to a list for editing: ");
             string info = Console.ReadLine();
+            try
+            {
+                Console.WriteLine(BookData.GetBook(Convert.ToInt32(info)).Summary());
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e);
+                Console.ReadKey();
+                Console.Clear();
+                throw;
+            }
 
             Console.WriteLine("------------------------ \n" +
                               "Choices \n" +

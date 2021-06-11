@@ -8,7 +8,7 @@ namespace LibraryApp
 {
      public class Greetings
      {
-         static public void SayHi()
+         public void SayHi()
          {
              Console.Write("Enter your name: ");
              string name = Console.ReadLine();

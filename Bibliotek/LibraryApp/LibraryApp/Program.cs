@@ -7,7 +7,8 @@ namespace LibraryApp
     {
         static void Main(string[] args)
         {
-            Greetings.SayHi();
+            Greetings sh = new Greetings();
+            sh.SayHi();
 
             BookData.Connector();
 

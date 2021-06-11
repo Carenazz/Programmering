@@ -39,6 +39,7 @@ namespace LibraryApp
             {
                 Console.WriteLine(e.Message);
             }
+            Console.WriteLine("Rating choices: G, PG, PG-13, R");
             Console.Write("Enter book rating: ");
             rate.Rating = Console.ReadLine().ToUpper();
 

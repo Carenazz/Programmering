@@ -13,6 +13,9 @@ namespace LibraryApp
         // Hovedmenu til valg af en bog, lave en bog eller fjernelse af en bog. Med en switch/case for at registrere et valid valg.
         public void HovedMenu()
         {
+            EditBook eb = new EditBook();
+            AddBook newBook = new AddBook();
+
             do
             {
                 Console.WriteLine("Main Menu \n" +
@@ -37,11 +40,10 @@ namespace LibraryApp
                         SelectBook.BookSelect();
                         break;
                     case "2":
-                        AddBook newBook = new AddBook();
                         newBook.BookAdd();
                         break;
                     case "3":
-                        EditBook.BookEdit();
+                        eb.BookEdit();
                         break;
                     case "4":
                         RemoveBook.BookRemove();
@@ -52,7 +54,7 @@ namespace LibraryApp
                     default:
                         Console.Clear();
                         Console.WriteLine("You typed something wrong, try again.");
-                        break;
+                        continue;
                 }
             } while (!mustClose);
             Console.WriteLine("Thanks for using Mike's Library program");

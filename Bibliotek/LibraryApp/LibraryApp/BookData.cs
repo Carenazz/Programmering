@@ -24,48 +24,6 @@ namespace LibraryApp
             throw new IndexOutOfRangeException("No book with the ID " + bookID + " was found");
         }
 
-        static public void EditBookData(string title, string author, int pages, string rating)
-        {
-            EditBookData(sqlite_conn, title, author, pages, rating);
-        }
-
-        static public void EditBookData(SQLiteConnection conn, string title, string author, int pages, string rating)
-        {
-            sqlite_cmd = conn.CreateCommand();
-
-            sqlite_cmd.CommandText = String.Format("UPDATE BookList SET Title = '{0}', Author = '{1}', Pages = {2}, Rating = '{3}'",
-                                                    title,
-                                                    author,
-                                                    pages,
-                                                    rating);
-
-            sqlite_cmd.ExecuteNonQuery();
-
-            books = new List<Book>();
-            ReadData(sqlite_conn);
-        }
-
-        #region Removal of Data
-        static public void BookRemoval(int ID)
-        {
-            BookRemoval(sqlite_conn, ID);
-        }
-
-        static public void BookRemoval(SQLiteConnection conn, int ID)
-        {
-             
-            sqlite_cmd = conn.CreateCommand();
-            Console.WriteLine(String.Format("DELETE FROM BookList WHERE BookID = '{0}'",
-                                                    ID));
-            sqlite_cmd.CommandText = String.Format("DELETE FROM BookList WHERE BookID = '{0}'",
-                                                    ID);
-            sqlite_cmd.ExecuteNonQuery();
-
-            books = new List<Book>();
-            ReadData(sqlite_conn);
-        }
-        #endregion
-
         #region Connection creation
         static public void Connector()
         {
@@ -77,7 +35,7 @@ namespace LibraryApp
         static SQLiteConnection CreateConnection()
         {
             SQLiteConnection sqlite_conn;
-            // Create a new database connection:
+            // Create a new database connection, remember to change it to your own datasource is downloading from Github!!
             sqlite_conn = new SQLiteConnection(@"Data Source=C:\Users\ikkeo\OneDrive\Skrivebord\Programmering\Database\BookLibrary.db");
             // Open the connection:
             try
@@ -89,29 +47,6 @@ namespace LibraryApp
                 Console.WriteLine(e);
             }
             return sqlite_conn;
-        }
-        #endregion
-
-        #region Data Insertion
-        public static void InsertData(string title, string author, int pages, string rating)
-        {
-            InsertData(sqlite_conn, title, author, pages, rating);
-        }
-
-        public static void InsertData(SQLiteConnection conn, string title, string author, int pages, string rating)
-        {
-             
-            sqlite_cmd = conn.CreateCommand();
-
-            sqlite_cmd.CommandText = String.Format("INSERT INTO BookList(Title, Author, Pages, Rating) VALUES('{0}','{1}','{2}','{3}')", 
-                                                    title,
-                                                    author,
-                                                    pages,
-                                                    rating);
-            sqlite_cmd.ExecuteNonQuery();
-
-            books = new List<Book>();
-            ReadData(sqlite_conn);
         }
         #endregion
 
@@ -144,5 +79,73 @@ namespace LibraryApp
             }
         }
         #endregion
+
+        #region Insertion of Data
+        public static void InsertData(string title, string author, int pages, string rating)
+        {
+            InsertData(sqlite_conn, title, author, pages, rating);
+        }
+
+        public static void InsertData(SQLiteConnection conn, string title, string author, int pages, string rating)
+        {
+             
+            sqlite_cmd = conn.CreateCommand();
+
+            sqlite_cmd.CommandText = String.Format("INSERT INTO BookList(Title, Author, Pages, Rating) VALUES('{0}','{1}','{2}','{3}')", 
+                                                    title,
+                                                    author,
+                                                    pages,
+                                                    rating);
+            sqlite_cmd.ExecuteNonQuery();
+
+            books = new List<Book>();
+            ReadData(sqlite_conn);
+        }
+        #endregion
+
+        #region Edit Data
+        static public void EditBookData(string title, string author, int pages, string rating)
+        {
+            EditBookData(sqlite_conn, title, author, pages, rating);
+        }
+
+        static private void EditBookData(SQLiteConnection conn, string title, string author, int pages, string rating)
+        {
+            sqlite_cmd = conn.CreateCommand();
+
+            sqlite_cmd.CommandText = String.Format("UPDATE BookList SET Title = '{0}', Author = '{1}', Pages = {2}, Rating = '{3}'",
+                                                    title,
+                                                    author,
+                                                    pages,
+                                                    rating);
+
+            sqlite_cmd.ExecuteNonQuery();
+
+            books = new List<Book>();
+            ReadData(sqlite_conn);
+        }
+        #endregion
+
+        #region Removal of Data
+        static public void BookRemoval(int ID)
+        {
+            BookRemoval(sqlite_conn, ID);
+        }
+
+        static public void BookRemoval(SQLiteConnection conn, int ID)
+        {
+             
+            sqlite_cmd = conn.CreateCommand();
+            Console.WriteLine(String.Format("DELETE FROM BookList WHERE BookID = '{0}'",
+                                                    ID));
+            sqlite_cmd.CommandText = String.Format("DELETE FROM BookList WHERE BookID = '{0}'",
+                                                    ID);
+            sqlite_cmd.ExecuteNonQuery();
+
+            books = new List<Book>();
+            ReadData(sqlite_conn);
+        }
+        #endregion
+
     }
 }
