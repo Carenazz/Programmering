@@ -9,8 +9,7 @@ namespace LibraryApp
     class AddBook
     {
         string verification;
-        public string title;
-        public string author;
+        public string title, author;
         public int pages;
         Book rate = new Book();
         BookData data = new BookData();

@@ -9,15 +9,14 @@ namespace LibraryApp
     public class Hovedmenu
     {
         bool mustClose = false;
+        EditBook eb = new EditBook();
+        AddBook newBook = new AddBook();
+        SelectBook selBook = new SelectBook();
+        RemoveBook remBook = new RemoveBook();
 
         // Hovedmenu til valg af en bog, lave en bog eller fjernelse af en bog. Med en switch/case for at registrere et valid valg.
         public void HovedMenu()
         {
-            EditBook eb = new EditBook();
-            AddBook newBook = new AddBook();
-            SelectBook selBook = new SelectBook();
-            RemoveBook remBook = new RemoveBook();
-
             do
             {
                 Console.WriteLine("Main Menu \n" +

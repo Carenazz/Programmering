@@ -21,7 +21,7 @@ namespace LibraryApp
             try
             {
                 removal = Convert.ToInt32(info);
-                DeleteBook();
+                VerifyRemoval();
             }
             catch (FormatException e)
             {
@@ -30,7 +30,7 @@ namespace LibraryApp
             }
         }
 
-        public void DeleteBook()
+        public void VerifyRemoval()
         {
             Console.Write("Confirm choice? Y / N : ");
             string verification = Console.ReadLine();
@@ -48,8 +48,8 @@ namespace LibraryApp
             }
             else
             {
-                Console.WriteLine(verification + " Is entered incorrectly, tried again");
-                DeleteBook();
+                Console.WriteLine(verification + " Is entered incorrectly, try again");
+                VerifyRemoval();
             }
         }
     }

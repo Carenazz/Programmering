@@ -104,20 +104,21 @@ namespace LibraryApp
         #endregion
 
         #region Edit Data
-        public void EditBookData(string title, string author, int pages, string rating)
+        public void EditBookData(string title, string author, int pages, string rating, int ID)
         {
-            EditBookData(sqlite_conn, title, author, pages, rating);
+            EditBookData(sqlite_conn, title, author, pages, rating, ID);
         }
 
-        private void EditBookData(SQLiteConnection conn, string title, string author, int pages, string rating)
+        private void EditBookData(SQLiteConnection conn, string title, string author, int pages, string rating, int ID)
         {
             sqlite_cmd = conn.CreateCommand();
 
-            sqlite_cmd.CommandText = String.Format("UPDATE BookList SET Title = '{0}', Author = '{1}', Pages = {2}, Rating = '{3}'",
+            sqlite_cmd.CommandText = String.Format("UPDATE BookList SET Title = '{0}', Author = '{1}', Pages = {2}, Rating = '{3}' WHERE BookID = '{4}'",
                                                     title,
                                                     author,
                                                     pages,
-                                                    rating);
+                                                    rating,
+                                                    ID);
 
             sqlite_cmd.ExecuteNonQuery();
 

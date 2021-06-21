@@ -8,10 +8,8 @@ namespace LibraryApp
 {
     public class Book
     {
-        public int ID;
-        public string title;
-        public string author;
-        public int pages;
+        public string title, author;
+        public int pages, ID;
         private string rating;
 
         // Constructor til titel, author, pages og rating til en bog og tilføjer den til listen og holder styr på antallet af bøger.
