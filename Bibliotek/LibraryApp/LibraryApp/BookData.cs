@@ -12,7 +12,7 @@ namespace LibraryApp
         private static List<Book> books = new List<Book>();
         private static SQLiteConnection sqlite_conn;
         private static SQLiteCommand sqlite_cmd;
-        static public Book GetBook(int bookID) 
+        public Book GetBook(int bookID) 
         {
             foreach (Book book in books)
             {
@@ -25,14 +25,14 @@ namespace LibraryApp
         }
 
         #region Connection creation
-        static public void Connector()
+        public void Connector()
         {
             sqlite_conn = CreateConnection();
             sqlite_cmd = sqlite_conn.CreateCommand();
             ReadData(sqlite_conn);
         }
 
-        static SQLiteConnection CreateConnection()
+        SQLiteConnection CreateConnection()
         {
             SQLiteConnection sqlite_conn;
             // Create a new database connection, remember to change it to your own datasource is downloading from Github!!
@@ -51,7 +51,7 @@ namespace LibraryApp
         #endregion
 
         #region Reading and printing Data.
-        public static void PrintData()
+        public void PrintData()
         {
             foreach (Book book in books)
             {
@@ -60,7 +60,7 @@ namespace LibraryApp
         }
 
 
-        public static void ReadData(SQLiteConnection conn)
+        public void ReadData(SQLiteConnection conn)
         {
             SQLiteDataReader sqlite_datareader;
              
@@ -81,12 +81,12 @@ namespace LibraryApp
         #endregion
 
         #region Insertion of Data
-        public static void InsertData(string title, string author, int pages, string rating)
+        public void InsertData(string title, string author, int pages, string rating)
         {
             InsertData(sqlite_conn, title, author, pages, rating);
         }
 
-        public static void InsertData(SQLiteConnection conn, string title, string author, int pages, string rating)
+        public void InsertData(SQLiteConnection conn, string title, string author, int pages, string rating)
         {
              
             sqlite_cmd = conn.CreateCommand();
@@ -104,12 +104,12 @@ namespace LibraryApp
         #endregion
 
         #region Edit Data
-        static public void EditBookData(string title, string author, int pages, string rating)
+        public void EditBookData(string title, string author, int pages, string rating)
         {
             EditBookData(sqlite_conn, title, author, pages, rating);
         }
 
-        static private void EditBookData(SQLiteConnection conn, string title, string author, int pages, string rating)
+        private void EditBookData(SQLiteConnection conn, string title, string author, int pages, string rating)
         {
             sqlite_cmd = conn.CreateCommand();
 
@@ -127,12 +127,12 @@ namespace LibraryApp
         #endregion
 
         #region Removal of Data
-        static public void BookRemoval(int ID)
+        public void BookRemoval(int ID)
         {
             BookRemoval(sqlite_conn, ID);
         }
 
-        static public void BookRemoval(SQLiteConnection conn, int ID)
+        public void BookRemoval(SQLiteConnection conn, int ID)
         {
              
             sqlite_cmd = conn.CreateCommand();

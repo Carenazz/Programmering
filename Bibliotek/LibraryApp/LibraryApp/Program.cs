@@ -10,7 +10,8 @@ namespace LibraryApp
             Greetings sh = new Greetings();
             sh.SayHi();
 
-            BookData.Connector();
+            BookData data = new BookData();
+            data.Connector();
 
             Hovedmenu hm = new Hovedmenu();
             hm.HovedMenu();
@@ -33,7 +34,7 @@ namespace LibraryApp
 
 #region get the power of a base number
 //Console.WriteLine(GetPow(10, 60));
-//static double GetPow(double baseNum, int powNum)
+//  double GetPow(double baseNum, int powNum)
 //{
 //    double result = 1;
 

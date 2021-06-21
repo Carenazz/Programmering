@@ -15,6 +15,8 @@ namespace LibraryApp
         {
             EditBook eb = new EditBook();
             AddBook newBook = new AddBook();
+            SelectBook selBook = new SelectBook();
+            RemoveBook remBook = new RemoveBook();
 
             do
             {
@@ -37,7 +39,7 @@ namespace LibraryApp
                 switch (menuSelect)
                 {
                     case "1":
-                        SelectBook.BookSelect();
+                        selBook.BookSelect();
                         break;
                     case "2":
                         newBook.BookAdd();
@@ -46,7 +48,7 @@ namespace LibraryApp
                         eb.BookEdit();
                         break;
                     case "4":
-                        RemoveBook.BookRemove();
+                        remBook.BookRemove();
                         break;
                     case "c":
                         mustClose = true;

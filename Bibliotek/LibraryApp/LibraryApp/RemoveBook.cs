@@ -8,11 +8,12 @@ namespace LibraryApp
 {
     class RemoveBook
     {
-        static public int removal;
+        public int removal;
+        BookData data = new BookData();
 
-        static public void BookRemove()
+        public void BookRemove()
         {
-            BookData.PrintData();
+            data.PrintData();
 
             Console.Write("Enter the bookID to add the book to a list for removal: ");
             string info = Console.ReadLine();
@@ -29,14 +30,14 @@ namespace LibraryApp
             }
         }
 
-        static public void DeleteBook()
+        public void DeleteBook()
         {
             Console.Write("Confirm choice? Y / N : ");
             string verification = Console.ReadLine();
 
             if (verification.ToLower() == "y")
             {
-                BookData.BookRemoval(removal);
+                data.BookRemoval(removal);
                 Console.Clear();
                 Console.WriteLine("Book has been removed");
             }

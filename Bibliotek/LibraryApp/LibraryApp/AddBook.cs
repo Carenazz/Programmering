@@ -13,7 +13,7 @@ namespace LibraryApp
         public string author;
         public int pages;
         Book rate = new Book();
-
+        BookData data = new BookData();
         public void BookAdd()
         {
             // Bogens information (Titel, forfatter, sider og rating)
@@ -59,7 +59,7 @@ namespace LibraryApp
             verification = Console.ReadLine();
             if (verification.ToLower() == "y")
             {
-                BookData.InsertData(title, author, pages, rate.Rating);
+                data.InsertData(title, author, pages, rate.Rating);
                 Console.Clear();
                 Console.WriteLine("Book has been added");
             }

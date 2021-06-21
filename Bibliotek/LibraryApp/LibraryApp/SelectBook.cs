@@ -8,11 +8,13 @@ namespace LibraryApp
 {
     public class SelectBook
     {
-        public static void BookSelect()
+        BookData data = new BookData();
+
+        public void BookSelect()
         {
             bool stopper = false;
             // Skriver ID + bogens titel ud
-            BookData.PrintData();
+            data.PrintData();
             
             do
             {
@@ -21,7 +23,7 @@ namespace LibraryApp
                     Console.Write("--------------------------- \n" +
                         "Select a book from ID for more information: ");
                     string bookID = Console.ReadLine();
-                    Console.WriteLine(BookData.GetBook(Convert.ToInt32(bookID)).Summary());
+                    Console.WriteLine(data.GetBook(Convert.ToInt32(bookID)).Summary());
                     Console.WriteLine("---------------------------");
                 }
                 // Error Handling, hvis man kom til at skrive f.eks. q i stedet for 1 eller der ikke findes en bog med ID'et.
