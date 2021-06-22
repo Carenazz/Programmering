@@ -9,6 +9,7 @@ namespace LibraryApp
     class RemoveBook
     {
         public int removal;
+        bool stop = false;
         BookData data = new BookData();
 
         public void BookRemove()
@@ -32,25 +33,31 @@ namespace LibraryApp
 
         public void VerifyRemoval()
         {
-            Console.Write("Confirm choice? Y / N : ");
-            string verification = Console.ReadLine();
+            do
+            {
+                Console.Write("Confirm choice? Y / N : ");
+                string verification = Console.ReadLine();
 
-            if (verification.ToLower() == "y")
-            {
-                data.BookRemoval(removal);
+                if (verification.ToLower() == "y")
+                {
+                    data.BookRemoval(removal);
+                    Console.WriteLine("Book has been removed");
+                    Console.ReadKey();
+                    stop = true;
+                }
+                else if(verification.ToLower() == "n")
+                {
+                    Console.WriteLine("Book removal has been cancelled");
+                    Console.ReadKey();
+                    stop = true;
+                }
+                else
+                {
+                    Console.WriteLine(verification + " Is entered incorrectly, try again");
+                }
                 Console.Clear();
-                Console.WriteLine("Book has been removed");
-            }
-            else if(verification.ToLower() == "n")
-            {
-                Console.Clear();
-                Console.WriteLine("Book removal has been cancelled");
-            }
-            else
-            {
-                Console.WriteLine(verification + " Is entered incorrectly, try again");
-                VerifyRemoval();
-            }
+            } while (!stop);
+            stop = false;
         }
     }
 }

@@ -30,14 +30,15 @@ namespace LibraryApp
             sqlite_conn = CreateConnection();
             sqlite_cmd = sqlite_conn.CreateCommand();
             ReadData(sqlite_conn);
+            sqlite_conn.Close();
         }
 
         SQLiteConnection CreateConnection()
         {
             SQLiteConnection sqlite_conn;
-            // Create a new database connection, remember to change it to your own datasource is downloading from Github!!
+            // Create a new database connection, remember to change it to your own datasource when downloading from Github!!
             sqlite_conn = new SQLiteConnection(@"Data Source=C:\Users\ikkeo\OneDrive\Skrivebord\Programmering\Database\BookLibrary.db");
-            // Open the connection:
+            // Opens the connection:
             try
             {
                 sqlite_conn.Open();
@@ -63,7 +64,7 @@ namespace LibraryApp
         public void ReadData(SQLiteConnection conn)
         {
             SQLiteDataReader sqlite_datareader;
-             
+
             sqlite_cmd = conn.CreateCommand();
             sqlite_cmd.CommandText = "SELECT * FROM BookList";
 
@@ -77,6 +78,7 @@ namespace LibraryApp
                 string myRating = sqlite_datareader.GetString(4);
                 books.Add(new Book(myID, myTitle, myAuthor, myPages, myRating));
             }
+            sqlite_conn.Close();
         }
         #endregion
 
@@ -88,7 +90,8 @@ namespace LibraryApp
 
         public void InsertData(SQLiteConnection conn, string title, string author, int pages, string rating)
         {
-             
+
+            sqlite_conn.Open();
             sqlite_cmd = conn.CreateCommand();
 
             sqlite_cmd.CommandText = String.Format("INSERT INTO BookList(Title, Author, Pages, Rating) VALUES('{0}','{1}','{2}','{3}')", 
@@ -100,6 +103,7 @@ namespace LibraryApp
 
             books = new List<Book>();
             ReadData(sqlite_conn);
+            sqlite_conn.Close();
         }
         #endregion
 
@@ -111,6 +115,7 @@ namespace LibraryApp
 
         private void EditBookData(SQLiteConnection conn, Book book)
         {
+            sqlite_conn.Open();
             sqlite_cmd = conn.CreateCommand();
 
             sqlite_cmd.CommandText = String.Format("UPDATE BookList SET Title = '{0}', Author = '{1}', Pages = {2}, Rating = '{3}' WHERE BookID = '{4}'",
@@ -124,6 +129,7 @@ namespace LibraryApp
 
             books = new List<Book>();
             ReadData(sqlite_conn);
+            sqlite_conn.Close();
         }
         #endregion
 
@@ -135,7 +141,7 @@ namespace LibraryApp
 
         public void BookRemoval(SQLiteConnection conn, int ID)
         {
-             
+            sqlite_conn.Open();
             sqlite_cmd = conn.CreateCommand();
             Console.WriteLine(String.Format("DELETE FROM BookList WHERE BookID = '{0}'",
                                                     ID));
@@ -145,6 +151,7 @@ namespace LibraryApp
 
             books = new List<Book>();
             ReadData(sqlite_conn);
+            sqlite_conn.Close();
         }
         #endregion
 

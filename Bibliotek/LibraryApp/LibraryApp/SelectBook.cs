@@ -45,7 +45,6 @@ namespace LibraryApp
                 }
                 else if (verification.ToLower() == "n")
                 {
-                    Console.Clear();
                     Console.WriteLine("Returning to main menu \n" +
                         "----------------------------");
                     stop = true;
@@ -54,9 +53,9 @@ namespace LibraryApp
                 {
                     Console.WriteLine(verification + " is not a valid input, returning to main menu");
                     Console.ReadKey();
-                    Console.Clear();
                     stop = true;
                 }
+                Console.Clear();
             } while (!stop);
         }
     }

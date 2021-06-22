@@ -22,6 +22,7 @@ namespace LibraryApp
             Rating = aRating;
         }
 
+        // Tom constructor til brug af klassens egne variabler til at lave en bog (Hvis f.eks. Author, pages og rating ikke skal bruges).
         public Book()
         {
 

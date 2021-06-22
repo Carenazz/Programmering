@@ -9,46 +9,44 @@ namespace LibraryApp
     class AddBook
     {
         string verification;
-        public string title, author;
-        public int pages;
-        Book rate = new Book();
         BookData data = new BookData();
         public void BookAdd()
         {
+            Book book = new Book();
             // Bogens information (Titel, forfatter, sider og rating)
             Console.Write("Enter a book name: ");
-            title = Console.ReadLine();
+            book.title = Console.ReadLine();
 
             // Checking if string is empty.
-            if (title == "")
+            if (book.title == "")
             {
                 Console.WriteLine("The book name can't be empty, try again.");
                 BookAdd(); // TODO - Move cursor up one, reason: To not have multiple lines of the same prompt.
             }
 
             Console.Write("Enter the author: ");
-            author = Console.ReadLine();
+            book.author = Console.ReadLine();
 
             Console.Write("Enter the amount of pages: ");
             try
             {
-                pages = Convert.ToInt32(Console.ReadLine());
+                book.pages = Convert.ToInt32(Console.ReadLine());
             }
-            catch (FormatException e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
+                book.pages = 0;
             }
             Console.WriteLine("Rating choices: G, PG, PG-13, R");
             Console.Write("Enter book rating: ");
-            rate.Rating = Console.ReadLine().ToUpper();
+            book.Rating = Console.ReadLine().ToUpper();
 
             // Giver brugeren en chance for at se om der er tastet rigtigt
             Console.WriteLine(
                 "---------------------------" + "\n" +
-                title + "\n" +
-                author + "\n" +
-                pages + "\n" +
-                rate.Rating + "\n" +
+                book.title + "\n" +
+                book.author + "\n" +
+                book.pages + "\n" +
+                book.Rating + "\n" +
                 "---------------------------"
                 );
 
@@ -58,14 +56,14 @@ namespace LibraryApp
             verification = Console.ReadLine();
             if (verification.ToLower() == "y")
             {
-                data.InsertData(title, author, pages, rate.Rating);
+                data.InsertData(book.title, book.author, book.pages, book.Rating);
                 Console.Clear();
-                Console.WriteLine("Book has been added");
+                Console.WriteLine(book.title + " has been added");
             }
             else
             {
                 Console.Clear();
-                Console.WriteLine("Book addition has been cancelled.");
+                Console.WriteLine("Adding the book has been cancelled.");
             }
         }
     }

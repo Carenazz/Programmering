@@ -50,10 +50,9 @@ namespace LibraryApp
                 {
                     case "1":
                         Console.Write("Edit the title: ");
-                        title = Console.ReadLine();
-                        book.title = title;
+                        book.title = Console.ReadLine();
 
-                        Console.Write("Is this title correct? " + title + "\n Y / N : ");
+                        Console.Write("Is this title correct? " + book.title + "\n Y / N : ");
                         verify = Console.ReadLine();
                         if (verify.ToLower() == "y")
                         {
@@ -88,10 +87,7 @@ namespace LibraryApp
                         }
                         catch (Exception)
                         {
-                            Console.Write("The value entered is not a number, returning to the main menu");
-                            Console.ReadKey();
-                            Console.Clear();
-                            throw;
+                            book.pages = 0;
                         }
                         break;
 
@@ -120,10 +116,7 @@ namespace LibraryApp
                         }
                         catch (Exception)
                         {
-                            Console.Write("The value entered is not a number, returning to the main menu");
-                            Console.ReadKey();
-                            Console.Clear();
-                            throw;
+                            pages = 0;
                         }
                         Console.Write("Edit the rating: ");
                         rating = Console.ReadLine();
@@ -156,6 +149,7 @@ namespace LibraryApp
                     default:
                         break;
                 }
+              Console.Clear();
             } while (!stop);
         }
 

@@ -7,14 +7,19 @@ namespace LibraryApp
     {
         static void Main(string[] args)
         {
-            Greetings sh = new Greetings();
-            sh.SayHi();
+            Console.Write("Enter your name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine(
+                "--------------------------- \n" +
+                "Hello " + name + "!" + "\n" +
+                "---------------------------"
+                );
 
             BookData data = new BookData();
             data.Connector();
 
             Hovedmenu hm = new Hovedmenu();
-            hm.HovedMenu();
+            hm.HovedMenu(data);
         }
     }
 }
