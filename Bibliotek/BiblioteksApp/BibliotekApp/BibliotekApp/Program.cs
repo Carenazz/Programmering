@@ -5,16 +5,26 @@ namespace BibliotekApp
 {
     class Program
     {
+        static List<Books> bookList = new List<Books>();
+        static List<Movies> movieList = new List<Movies>();
+
         static void Main(string[] args)
         {
-            string tempstring;
-            tempstring = Console.ReadLine();
+            LibraryData data = new LibraryData();
 
-            Library book = new Books(tempstring, "someone", 5, "o");
-            Library movie = new Movies("ABCDEFG", "someone", 5, "R");
+            data.Connection();
 
-            book.Print();
-            movie.Print();
+            bookList = data.books;
+
+            foreach (Books print in bookList)
+            {
+                print.Print();
+            }
+
+            foreach (Movies print in movieList)
+            {
+                print.Print();
+            }
 
             Console.ReadKey();
         }

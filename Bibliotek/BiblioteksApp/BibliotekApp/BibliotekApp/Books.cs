@@ -21,7 +21,8 @@ namespace BibliotekApp
 
         public override void Print()
         {
-            Console.WriteLine("Title: " + Title);
+            Console.WriteLine("Title: " + Title +
+                              "\nRating: " + Rating);
         }
 
         public string Author

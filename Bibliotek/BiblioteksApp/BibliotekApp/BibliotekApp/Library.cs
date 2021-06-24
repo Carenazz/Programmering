@@ -31,10 +31,11 @@ namespace BibliotekApp
             get { return rating; }
             protected set
             {
-                if (value.ToUpper() == "G" ||
-                    value.ToUpper() == "PG" ||
-                    value.ToUpper() == "PG-13" ||
-                    value.ToUpper() == "R" )
+                value = value.ToUpper();
+                if (value == "G" ||
+                    value == "PG" ||
+                    value == "PG-13" ||
+                    value == "R" )
                 {
                     rating = value;
                 }
@@ -47,12 +48,7 @@ namespace BibliotekApp
 
         private bool Validate(string name)
         {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                return false;
-            }
-            else
-                return true;
+            return !string.IsNullOrWhiteSpace(name);
         }
 
         public abstract void Print();
