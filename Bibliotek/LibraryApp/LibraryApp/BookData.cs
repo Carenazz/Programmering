@@ -143,8 +143,6 @@ namespace LibraryApp
         {
             sqlite_conn.Open();
             sqlite_cmd = conn.CreateCommand();
-            Console.WriteLine(String.Format("DELETE FROM BookList WHERE BookID = '{0}'",
-                                                    ID));
             sqlite_cmd.CommandText = String.Format("DELETE FROM BookList WHERE BookID = '{0}'",
                                                     ID);
             sqlite_cmd.ExecuteNonQuery();

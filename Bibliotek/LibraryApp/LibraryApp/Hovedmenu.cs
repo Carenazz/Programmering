@@ -8,13 +8,15 @@ namespace LibraryApp
 {
     public class Hovedmenu
     {
-        bool mustClose = false;
+        string IDS = "";
+        int ID;
+        bool mustClose = false, stop = false;
         EditBook eb = new EditBook();
         AddBook newBook = new AddBook();
         SelectBook selBook = new SelectBook();
         RemoveBook remBook = new RemoveBook();
 
-        // Hovedmenu til valg af en bog, lave en bog eller fjernelse af en bog. Med en switch/case for at registrere et valid valg.
+        // Hovedmenu. lavet med en switch/case for at registrere et valid valg.
         public void HovedMenu(BookData data)
         {
             do
@@ -34,7 +36,7 @@ namespace LibraryApp
                 Console.Write("Enter an option in the menu: ");
                 string menuSelect = Console.ReadLine().ToLower();
                 Console.Clear();
-
+                
                 switch (menuSelect)
                 {
                     case "1":
@@ -47,7 +49,21 @@ namespace LibraryApp
                         eb.BookEdit();
                         break;
                     case "4":
-                        remBook.BookRemove();
+                        do
+                        {
+                            Console.Write("Write the book ID for removal: ");
+                            IDS = Console.ReadLine();
+                            if (char.IsNumber(Convert.ToChar(IDS)))
+                            {
+                                ID = Convert.ToInt32(IDS);
+                                stop = true;
+                            }
+                            else
+                                Console.WriteLine("Input is not a number, try again.");
+
+                        } while (!stop);
+                        remBook.BookRemove(ID);
+                        stop = false;
                         break;
                     case "c":
                         mustClose = true;
