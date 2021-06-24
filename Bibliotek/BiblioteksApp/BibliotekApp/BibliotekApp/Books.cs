@@ -23,5 +23,30 @@ namespace BibliotekApp
         {
             Console.WriteLine("Title: " + Title);
         }
+
+        public string Author
+        {
+            get { return author; }
+            set
+            {
+                author = value;
+            }
+        }
+
+        public int Pages
+        {
+            get { return pages; }
+            set
+            {
+                if (char.IsNumber(Convert.ToChar(value)) || value != 0)
+                {
+                    pages = value;
+                }
+                else
+                {
+                    pages = 50;
+                }
+            }
+        }
     }
 }

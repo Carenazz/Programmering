@@ -32,14 +32,19 @@ namespace BibliotekApp
             } 
         }
 
+        // Property to handle playtime, in case the value is 0, we take a default assumption the movie is 90 minutes long.
         public int Playtime
         {
             get { return playtime; }
             set
             {
-                if (char.IsDigit(Convert.ToChar(value)))
+                if (char.IsNumber(Convert.ToChar(value)) || value != 0)
                 {
                     playtime = value;
+                }
+                else
+                {
+                    playtime = 90;
                 }
             }
         }
