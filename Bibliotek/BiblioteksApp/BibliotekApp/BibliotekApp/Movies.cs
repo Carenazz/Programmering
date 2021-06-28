@@ -39,14 +39,7 @@ namespace BibliotekApp
             get { return playtime; }
             set
             {
-                if (char.IsNumber(Convert.ToChar(value)) || value != 0)
-                {
-                    playtime = value;
-                }
-                else
-                {
-                    playtime = 90;
-                }
+                playtime = value;
             }
         }
     }

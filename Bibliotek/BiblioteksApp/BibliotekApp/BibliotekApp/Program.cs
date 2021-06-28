@@ -14,6 +14,7 @@ namespace BibliotekApp
             LibraryData data = new LibraryData();
             string tempTitle = "", tempString = "", tempRating = "", tempInt;
             int convertInt = 1;
+            bool isValidNum;
 
             data.Connection();
 
@@ -28,7 +29,13 @@ namespace BibliotekApp
             {
                 Console.Write("Write the number of pages / duration on movie: ");
                 tempInt = Console.ReadLine();
-            } while (!tempInt.All(char.IsDigit));
+                isValidNum = !tempInt.All(char.IsDigit);
+                if (isValidNum)
+                {
+                    Console.WriteLine("Is not a valid number, try again.");
+                }
+            } while (isValidNum);
+            
             convertInt = Convert.ToInt32(tempInt);
             Console.Write("Indicate a rating: ");
             tempRating = Console.ReadLine();
@@ -38,11 +45,13 @@ namespace BibliotekApp
 
             foreach (Books print in bookList)
             {
+                Console.WriteLine("-----------------------");
                 print.Print();
             }
 
             foreach (Movies print in movieList)
             {
+                Console.WriteLine("-----------------------");
                 print.Print();
             }
 
