@@ -22,6 +22,7 @@ namespace BibliotekApp
         public override void Print()
         {
             Console.WriteLine("Title: " + Title +
+                              "\nPages: " + pages +
                               "\nRating: " + Rating);
         }
 
@@ -34,19 +35,13 @@ namespace BibliotekApp
             }
         }
 
+        // Propery to handle pages, if given the wrong information or 0, we give the book a default value
         public int Pages
         {
             get { return pages; }
             set
             {
-                if (char.IsNumber(Convert.ToChar(value)) || value != 0)
-                {
-                    pages = value;
-                }
-                else
-                {
-                    pages = 50;
-                }
+                pages = value;
             }
         }
     }

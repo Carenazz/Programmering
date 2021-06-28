@@ -26,6 +26,7 @@ namespace BibliotekApp
             }
         }
 
+        // Ensures the rating is only withinin the acceptable parameters.
         public string Rating
         {
             get { return rating; }
@@ -45,6 +46,7 @@ namespace BibliotekApp
                 }
             }
         }
+
 
         private bool Validate(string name)
         {

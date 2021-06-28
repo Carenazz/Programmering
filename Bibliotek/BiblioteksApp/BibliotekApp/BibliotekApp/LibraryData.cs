@@ -7,6 +7,7 @@ namespace BibliotekApp
     public class LibraryData
     {
         public List<Books> books = new List<Books>();
+        public List<Movies> movies = new List<Movies>();
         private static SQLiteConnection sqlite_conn;
         private static SQLiteCommand sqlite_cmd;
 
@@ -16,7 +17,8 @@ namespace BibliotekApp
             sqlite_cmd = sqlite_conn.CreateCommand();
             ReadData(sqlite_conn);
         }
-
+        
+        // Remember to change the text after the Data Source= to your exported BookLibrary.db location
         SQLiteConnection CreateConnection()
         {
             SQLiteConnection sqlite_conn;
@@ -46,6 +48,16 @@ namespace BibliotekApp
             {
                 books.Add(new Books(sqlite_datareader.GetString(1), sqlite_datareader.GetString(2), sqlite_datareader.GetInt32(3), sqlite_datareader.GetString(4)));
             }
+
+            sqlite_cmd = conn.CreateCommand();
+            sqlite_cmd.CommandText = "SELECT * FROM MovieList";
+
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                movies.Add(new Movies(sqlite_datareader.GetString(1), sqlite_datareader.GetString(2), sqlite_datareader.GetInt32(3), sqlite_datareader.GetString(4)));
+            }
+
             sqlite_conn.Close();
         }
     }
