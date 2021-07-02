@@ -14,10 +14,10 @@ namespace BibliotekApp
         static List<Books> bookList = new List<Books>();
         static List<Movies> movieList = new List<Movies>();
 
-        public enum Types 
+        public enum Types: int
         {
-            Book,
-            Movie,
+            Book = 1,
+            Movie = 2,
         }
 
         public void PrintTable(Types type)
