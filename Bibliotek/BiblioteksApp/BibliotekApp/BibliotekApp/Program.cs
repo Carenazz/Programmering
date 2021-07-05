@@ -10,28 +10,26 @@ namespace BibliotekApp
         static void Main(string[] args)
         {
             DataManipulation manipulator = new DataManipulation();
+            manipulator.ConnectDataOnce();
+            
             string tempTitle = "", tempString = "", tempRating = "", tempInt;
             int convertInt = 1, i = 1, pickType = 1;
-            bool isValidNum;
 
             do
             {
                 Console.Write("Write the title: ");
                 tempTitle = Console.ReadLine();
+                
                 Console.Write("Write the author/director: ");
                 tempString = Console.ReadLine();
+                
                 do
                 {
                     Console.Write("Write the number of pages / duration on movie: ");
                     tempInt = Console.ReadLine();
-                    isValidNum = !tempInt.All(char.IsDigit);
-                    if (isValidNum)
-                    {
-                        Console.WriteLine("Is not a valid number, try again.");
-                    }
-                } while (isValidNum);
-
+                } while (!IsValidNum(tempInt));
                 convertInt = Convert.ToInt32(tempInt);
+
                 Console.Write("Indicate a rating: ");
                 tempRating = Console.ReadLine();
 
@@ -48,14 +46,21 @@ namespace BibliotekApp
                 i = 1;
 
                 Console.WriteLine(new String('-', 15));
-                if (Enum.IsDefined(typeof(DataManipulation.Types), pickType)) {
+                do
+                {
+                    Console.Write("Insert data into which list? (Use number): ");
+                    tempInt = Console.ReadLine();
+                } while (!IsValidNum(tempInt));
+                pickType = Convert.ToInt32(tempInt);
+
+                if (Enum.IsDefined(typeof(DataManipulation.Types), pickType)) 
                     manipulator.Add((DataManipulation.Types) pickType, tempTitle, tempString, convertInt, tempRating);
-                }
+                
                 manipulator.PrintTable((DataManipulation.Types) pickType);
 
             } while (Continue());
 
-
+            Console.WriteLine("Thanks for using Mike's Library application");
             Console.ReadKey();
         }
 
@@ -71,6 +76,17 @@ namespace BibliotekApp
             Console.WriteLine("");
 
             return validate.Key == ConsoleKey.Y;
+        }
+
+        static private bool IsValidNum(string check)
+        {
+            if (check.All(char.IsDigit) && !string.IsNullOrWhiteSpace(check))
+            {
+                return true;
+            }
+            else
+                Console.WriteLine("Is not a valid number, try again.");
+                return false;
         }
     }
 }

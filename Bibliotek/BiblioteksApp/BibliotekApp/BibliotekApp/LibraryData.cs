@@ -15,7 +15,7 @@ namespace BibliotekApp
         {
             sqlite_conn = CreateConnection();
             sqlite_cmd = sqlite_conn.CreateCommand();
-            ReadData(sqlite_conn);
+            ReadData();
         }
         
         // Remember to change the text after the Data Source= to your exported BookLibrary.db location
@@ -36,11 +36,11 @@ namespace BibliotekApp
             return sqlite_conn;
         }
 
-        public void ReadData(SQLiteConnection conn)
+        public void ReadData()
         {
             SQLiteDataReader sqlite_datareader;
 
-            sqlite_cmd = conn.CreateCommand();
+            sqlite_cmd = sqlite_conn.CreateCommand();
             sqlite_cmd.CommandText = "SELECT * FROM BookList";
 
             sqlite_datareader = sqlite_cmd.ExecuteReader();
@@ -49,7 +49,7 @@ namespace BibliotekApp
                 books.Add(new Books(sqlite_datareader.GetString(1), sqlite_datareader.GetString(2), sqlite_datareader.GetInt32(3), sqlite_datareader.GetString(4)));
             }
 
-            sqlite_cmd = conn.CreateCommand();
+            sqlite_cmd = sqlite_conn.CreateCommand();
             sqlite_cmd.CommandText = "SELECT * FROM MovieList";
 
             sqlite_datareader = sqlite_cmd.ExecuteReader();
@@ -59,6 +59,11 @@ namespace BibliotekApp
             }
 
             sqlite_conn.Close();
+        }
+
+        public void UploadData(SQLiteConnection conn)
+        {
+
         }
     }
 }

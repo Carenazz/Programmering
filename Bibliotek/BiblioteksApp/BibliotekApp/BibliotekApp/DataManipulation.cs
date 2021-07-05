@@ -11,6 +11,8 @@ namespace BibliotekApp
     // </summary>
     public class DataManipulation
     {
+        LibraryData data = new LibraryData();
+
         static List<Books> bookList = new List<Books>();
         static List<Movies> movieList = new List<Movies>();
 
@@ -63,6 +65,13 @@ namespace BibliotekApp
         public void Modify(Types type, int ID, string title, string creator, int length, string rating)
         {
 
+        }
+
+        public void ConnectDataOnce()
+        {
+            data.Connection();
+            bookList = data.books;
+            movieList = data.movies;
         }
     }
 }

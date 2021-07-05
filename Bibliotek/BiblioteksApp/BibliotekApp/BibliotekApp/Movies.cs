@@ -21,7 +21,7 @@ namespace BibliotekApp
 
         public override void Print()
         {
-            Console.WriteLine("-----------------------");
+            Console.WriteLine(new String('-', 25));
             Console.WriteLine("Title: " + Title +
                               "\nRating: " + Rating);
         }
