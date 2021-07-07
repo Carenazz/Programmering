@@ -49,11 +49,11 @@ namespace BibliotekApp
             {
                 case Types.Book:
                     bookList.Add(new Books(title, creator, length, rating));
-                    data.UploadData((LibraryData.Types) 1, title, creator, length, rating);
+                    // data.UploadData((LibraryData.Types) 1, title, creator, length, rating);
                     break;
                 case Types.Movie:
                     movieList.Add(new Movies(title, creator, length, rating));
-                    data.UploadData((LibraryData.Types) 2, title, creator, length, rating);
+                    // data.UploadData((LibraryData.Types) 2, title, creator, length, rating);
                     break;
             }
         }
