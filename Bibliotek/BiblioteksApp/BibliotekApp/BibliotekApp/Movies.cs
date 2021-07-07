@@ -17,6 +17,7 @@ namespace BibliotekApp
             director = aDirector;
             playtime = aPlaytime;
             Rating = aRating;
+            GetID++;
         }
 
         public override void Print()

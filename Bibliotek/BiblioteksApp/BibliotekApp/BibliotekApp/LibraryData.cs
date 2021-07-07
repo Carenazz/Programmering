@@ -11,6 +11,12 @@ namespace BibliotekApp
         private static SQLiteConnection sqlite_conn;
         private static SQLiteCommand sqlite_cmd;
 
+        public enum Types : int
+        {
+            Book = 1,
+            Movie = 2,
+        }
+
         public void Connection()
         {
             sqlite_conn = CreateConnection();
@@ -61,9 +67,33 @@ namespace BibliotekApp
             sqlite_conn.Close();
         }
 
-        public void UploadData(SQLiteConnection conn)
+        public void UploadData(Types type, string title, string creator, int length, string rating)
         {
-
+            sqlite_conn.Open();
+            switch (type)
+            {
+                case Types.Book:
+                    sqlite_cmd = sqlite_conn.CreateCommand();
+                    sqlite_cmd.CommandText = String.Format("INSERT INTO BookList(Title, Author, Pages, Rating) VALUES('{0}','{1}','{2}','{3}')",
+                                                            title,
+                                                            creator,
+                                                            length,
+                                                            rating);
+                    sqlite_cmd.ExecuteNonQuery();
+                    break;
+                case Types.Movie:
+                    sqlite_cmd = sqlite_conn.CreateCommand();
+                    sqlite_cmd.CommandText = String.Format("INSERT INTO MovieList(Title, Director, PlayTime, Rating) VALUES('{0}','{1}','{2}','{3}')",
+                                                            title,
+                                                            creator,
+                                                            length,
+                                                            rating);
+                    sqlite_cmd.ExecuteNonQuery();
+                    break;
+                default:
+                    break;
+            }
+            sqlite_conn.Close();
         }
     }
 }

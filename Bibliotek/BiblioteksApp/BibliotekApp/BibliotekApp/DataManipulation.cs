@@ -49,22 +49,39 @@ namespace BibliotekApp
             {
                 case Types.Book:
                     bookList.Add(new Books(title, creator, length, rating));
+                    data.UploadData((LibraryData.Types) 1, title, creator, length, rating);
                     break;
                 case Types.Movie:
                     movieList.Add(new Movies(title, creator, length, rating));
+                    data.UploadData((LibraryData.Types) 2, title, creator, length, rating);
                     break;
             }
-
         }
 
         public void Remove(Types type, int ID)
         {
-
+            switch (type)
+            {
+                case Types.Book:
+                    break;
+                case Types.Movie:
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void Modify(Types type, int ID, string title, string creator, int length, string rating)
         {
-
+            switch (type)
+            {
+                case Types.Book:
+                    break;
+                case Types.Movie:
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void ConnectDataOnce()

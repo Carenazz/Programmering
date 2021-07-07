@@ -17,6 +17,7 @@ namespace BibliotekApp
             author = aAuthor;
             pages = aPages;
             Rating = aRating;
+            GetID++;
         }
 
         public override void Print()

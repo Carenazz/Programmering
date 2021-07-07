@@ -9,6 +9,7 @@ namespace BibliotekApp
     public abstract class Library
     {
         private string title, rating;
+        protected int ID;
 
         public string Title
         {
@@ -54,5 +55,14 @@ namespace BibliotekApp
         }
 
         public abstract void Print();
+
+        public int GetID
+        {
+            get { return ID; }
+            protected set
+            {
+                ID++;
+            }
+        }
     }
 }
