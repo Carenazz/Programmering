@@ -10,20 +10,28 @@ namespace BibliotekApp
     {
         private string author;
         private int pages;
-        
+
         public Books(string aTitle, string aAuthor, int aPages, string aRating)
         {
             Title = aTitle;
             author = aAuthor;
             pages = aPages;
             Rating = aRating;
-            GetID++;
+        }
+        public Books(int aID, string aTitle, string aAuthor, int aPages, string aRating)
+        {
+            ID = aID;
+            Title = aTitle;
+            author = aAuthor;
+            pages = aPages;
+            Rating = aRating;
         }
 
         public override void Print()
         {
             Console.WriteLine(new String('-', 25));
-            Console.WriteLine("Title: " + Title +
+            Console.WriteLine("ID: " + ID +
+                              "\nTitle: " + Title +
                               "\nPages: " + pages +
                               "\nRating: " + Rating);
         }

@@ -14,7 +14,7 @@ namespace BibliotekApp
             manipulator.ConnectDataOnce();
 
             string tempTitle = "", tempString = "", tempRating = "", tempInt;
-            int convertInt = 1, pickType = 1, menuChoice;
+            int convertInt = 1, pickType = 1, menuChoice, ID = 0;
 
             do
             {
@@ -39,6 +39,7 @@ namespace BibliotekApp
                         pickType = Convert.ToInt32(tempInt);
                         manipulator.PrintTable((DataManipulation.Types)pickType);
                         break;
+
                     case 2:
                         Console.Write("Write the title: ");
                         tempTitle = Console.ReadLine();
@@ -53,6 +54,7 @@ namespace BibliotekApp
                         } while (!IsValidNum(tempInt));
                         convertInt = Convert.ToInt32(tempInt);
 
+                        Console.WriteLine("Allowed ratings - G, PG, PG-13, R");
                         Console.Write("Indicate a rating: ");
                         tempRating = Console.ReadLine();
 
@@ -69,6 +71,32 @@ namespace BibliotekApp
                             manipulator.Add((DataManipulation.Types)pickType, tempTitle, tempString, convertInt, tempRating);
 
                         manipulator.PrintTable((DataManipulation.Types)pickType);
+                        break;
+
+                    case 3:
+                        // Add a way to remove from the list
+                        EnumTable();
+                        do
+                        {
+                            Console.Write("Remove a book or movie? ");
+                            tempInt = Console.ReadLine();
+                        } while (!IsValidNum(tempInt));
+                        pickType = Convert.ToInt32(tempInt);
+                        do
+                        {
+                            manipulator.PrintTable((DataManipulation.Types)pickType);
+                            Console.Write(new String(' ', Console.WindowWidth));
+                            Console.Write("Select from ID: ");
+                            tempInt = Console.ReadLine();
+                        } while (!IsValidNum(tempInt));
+                        ID = Convert.ToInt32(tempInt);
+
+                        manipulator.Remove((DataManipulation.Types)pickType, ID);
+                        break;
+
+                    case 4:
+                        // Make a way to edit information
+                        manipulator.Modify((DataManipulation.Types)pickType, ID, tempTitle, tempString, convertInt, tempRating);
                         break;
                     default:
                         Console.WriteLine("Is not an option in the menu");

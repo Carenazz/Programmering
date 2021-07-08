@@ -17,13 +17,21 @@ namespace BibliotekApp
             director = aDirector;
             playtime = aPlaytime;
             Rating = aRating;
-            GetID++;
         }
 
+        public Movies(int aID, string aTitle, string aDirector, int aPlaytime, string aRating)
+        {
+            ID = aID;
+            Title = aTitle;
+            director = aDirector;
+            playtime = aPlaytime;
+            Rating = aRating;
+        }
         public override void Print()
         {
             Console.WriteLine(new String('-', 25));
-            Console.WriteLine("Title: " + Title +
+            Console.WriteLine("ID: " + ID +
+                              "\nTitle: " + Title +
                               "\nRating: " + Rating);
         }
 
