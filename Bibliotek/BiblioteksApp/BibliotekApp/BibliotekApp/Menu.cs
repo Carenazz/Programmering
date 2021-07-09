@@ -96,6 +96,58 @@ namespace BibliotekApp
 
                     case 4:
                         // Make a way to edit information
+                        EnumTable();
+                        do
+                        {
+                            Console.WriteLine("Edit a book or a movie? ");
+                            tempInt = Console.ReadLine();
+                        } while (!IsValidNum(tempInt));
+                        pickType = Convert.ToInt32(tempInt);
+
+                        manipulator.PrintTable((DataManipulation.Types)pickType);
+
+                        do
+                        {
+                            Console.WriteLine("Which book do you want to edit (Select with ID): ");
+                            tempInt = Console.ReadLine();
+                        } while (!IsValidNum(tempInt));
+                        ID = Convert.ToInt32(tempInt);
+
+                        Console.Write("Edit title, leave blank for no changes: ");
+                        tempTitle = Console.ReadLine();
+                        if (EmptyOrWhiteSpace(tempTitle))
+                        {
+                            tempTitle = null;
+                        }
+
+                        Console.WriteLine("Edit author/director, leave blank for no changes: ");
+                        tempString = Console.ReadLine();
+                        if (EmptyOrWhiteSpace(tempString))
+                        {
+                            tempString = null;
+                        }
+
+                        do
+                        {
+                            Console.WriteLine("Edit the amount of pages or movie length, leave blank for no changes: ");
+                            tempInt = Console.ReadLine();
+                            if (EmptyOrWhiteSpace(tempInt))
+                            {
+                                tempInt = "1";
+                            }
+                        } while (!IsValidNum(tempInt) || string.IsNullOrWhiteSpace(tempInt));
+                        if (!EmptyOrWhiteSpace(tempInt))
+                        {
+                            convertInt = Convert.ToInt32(tempInt);
+                        }
+
+                        Console.WriteLine("Edit the rating, leave blank for no changes: ");
+                        tempRating = Console.ReadLine();
+                        if (EmptyOrWhiteSpace(tempRating))
+                        {
+                            tempRating = null;
+                        }
+
                         manipulator.Modify((DataManipulation.Types)pickType, ID, tempTitle, tempString, convertInt, tempRating);
                         break;
                     default:
@@ -105,31 +157,7 @@ namespace BibliotekApp
             } while (Continue());
         }
 
-        // Checks if the user wants to continue at the end of the program.
-        private bool Continue()
-        {
-            Console.Write("Do you want to continue? (Y / N): ");
-
-            ConsoleKeyInfo validate = Console.ReadKey();
-            int CurrentLine = Console.CursorTop;
-            Console.SetCursorPosition(0, Console.CursorTop);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, CurrentLine);
-            Console.WriteLine("");
-
-            return validate.Key == ConsoleKey.Y;
-        }
-
-        // Checks if a string is a number.
-        private bool IsValidNum(string check)
-        {
-            if (check.All(char.IsDigit) && !string.IsNullOrWhiteSpace(check))
-                return true;
-            else
-                Console.WriteLine("Is not a valid number, try again.");
-            return false;
-        }
-
+        #region Void Methods
         private void MenuText()
         {
             Console.WriteLine(new String('-', 30));
@@ -157,5 +185,44 @@ namespace BibliotekApp
             }
             Console.WriteLine(new String('-', 15));
         }
+        #endregion
+
+        #region Bool Methods
+        // Checks if the user wants to continue at the end of the program.
+        private bool Continue()
+        {
+            Console.Write("Do you want to continue? (Y / N): ");
+
+            ConsoleKeyInfo validate = Console.ReadKey();
+            int CurrentLine = Console.CursorTop;
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, CurrentLine);
+            Console.WriteLine("");
+
+            return validate.Key == ConsoleKey.Y;
+        }
+
+        // Checks if a string is a number.
+        private bool IsValidNum(string check)
+        {
+            if (check.All(char.IsDigit) && !string.IsNullOrWhiteSpace(check))
+                return true;
+            else
+                Console.WriteLine("Is not a valid number, try again.");
+            return false;
+        }
+
+        private bool EmptyOrWhiteSpace(string check)
+        {
+            if (string.IsNullOrWhiteSpace(check))
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
+        #endregion
     }
 }

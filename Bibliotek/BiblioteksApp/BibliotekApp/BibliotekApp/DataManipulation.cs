@@ -13,10 +13,16 @@ namespace BibliotekApp
     {
         LibraryData data = new LibraryData();
 
-        static List<Books> bookList = new List<Books>();
-        static List<Movies> movieList = new List<Movies>();
+        List<Books> bookList = null;
+        List<Movies> movieList = null;
 
-        public enum Types: int
+        public DataManipulation()
+        {
+            this.bookList = data.books;
+            this.movieList = data.movies;
+        }
+
+        public enum Types : int
         {
             Book = 1,
             Movie = 2,
@@ -43,52 +49,58 @@ namespace BibliotekApp
             }
         }
 
+        // Add a book or a movie to the list.
         public void Add(Types type, string title, string creator, int length, string rating)
         {
             switch (type)
             {
                 case Types.Book:
-                    bookList.Add(new Books(title, creator, length, rating));
-                    // data.UploadData((LibraryData.Types) 1, title, creator, length, rating);
+                    data.UploadData(new Books(title, creator, length, rating));
                     break;
                 case Types.Movie:
-                    movieList.Add(new Movies(title, creator, length, rating));
-                    // data.UploadData((LibraryData.Types) 2, title, creator, length, rating);
+                    data.UploadData(new Books(title, creator, length, rating));
                     break;
             }
         }
 
+        // Remove a book or movie from a list.
         public void Remove(Types type, int ID)
         {
             switch (type)
             {
                 case Types.Book:
+                    // ID - 1 is equal to the indexing of the list. The first index being 0 but 1 in the ID.
+                    data.RemoveData((LibraryData.Types)1, ID);
                     break;
                 case Types.Movie:
+                    data.RemoveData((LibraryData.Types)2, ID);
                     break;
                 default:
                     break;
             }
         }
 
+        // Modify a book or movie in the list.
         public void Modify(Types type, int ID, string title, string creator, int length, string rating)
         {
+
             switch (type)
             {
                 case Types.Book:
+                    data.ModifyData(new Books(ID, title, creator, length, rating));
                     break;
                 case Types.Movie:
+                    data.ModifyData(new Movies(ID, title, creator, length, rating));
                     break;
                 default:
                     break;
             }
+
         }
 
         public void ConnectDataOnce()
         {
             data.Connection();
-            bookList = data.books;
-            movieList = data.movies;
         }
     }
 }
