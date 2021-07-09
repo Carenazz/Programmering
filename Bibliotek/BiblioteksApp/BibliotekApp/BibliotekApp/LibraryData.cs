@@ -116,19 +116,20 @@ namespace BibliotekApp
                     sqlite_cmd.CommandText = String.Format("DELETE FROM BookList WHERE BookID = '{0}'",
                                                             ID);
                     sqlite_cmd.ExecuteNonQuery();
-                    books.RemoveAt(ID - 1);
                     break;
                 case Types.Movie:
                     sqlite_cmd = sqlite_conn.CreateCommand();
                     sqlite_cmd.CommandText = String.Format("DELETE FROM MovieList WHERE MovieID = '{0}'",
                                                             ID);
                     sqlite_cmd.ExecuteNonQuery();
-                    movies.RemoveAt(ID - 1);
                     break;
                 default:
                     break;
             }
+
             Close();
+
+            ReadData();
         }
 
         public void ModifyData(Library item)
